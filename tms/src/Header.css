@@ -2,7 +2,7 @@
     height: 60px;
     display: flex;
     align-items: flex-end;
-    background-color: mediumturquoise;
+    background-color: rgb(230, 237, 236);
     position:sticky;
     z-index: 100;
     padding-left: 75%;
