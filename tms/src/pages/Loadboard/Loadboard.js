@@ -1,8 +1,9 @@
 import React, { useContext, useState } from 'react';
 import TableComponent from './TableComponent';
-import { SidebarProvider } from './SidebarContext';
+import { SidebarProvider } from '../../SidebarContext';
 import "./Loadboard.css"
-import Addload from './pages/Popups/Addload/Addload';
+import Addload from '../Popups/Addload/Addload';
+import Editload from '../Popups/Editload/Editload';
 
 // Loadboard.js uses TableComponent.js as the template for a table and passes in the correct columns
 // as well as dummy data to display on the table.
@@ -14,12 +15,40 @@ const LoadBoard = () => {
 
   // const tableClass = isActive ? 'table active' : 'table';
   //const [loadBoardData, setLoadBoardData] = useState([]);
+  const [selectedRowData, setSelectedRowData] = useState(null);
   const [showAddloadPopup, setshowAddloadPopup] = useState(false);
   const handleCloseAddloadPopup = () => {
     setshowAddloadPopup(false);
   }
-  const columns = ["Load #", "Bill to Customer", "Carrier", "Truck", "Trailer",
-    "Driver", "PU Date", "From", "To", "DLY Date", "Last Location", "Status", "Load Rep", "POD Date"];
+
+  const [showEditloadPopup, setshowEditloadPopup] = useState(false);
+  const handleCloseEditloadPopup = () => {
+    setshowEditloadPopup(false);
+    setSelectedRowData(null);
+  }
+
+  const handleEditClick = (rowData) => {
+    setSelectedRowData(rowData);
+    setshowEditloadPopup(true);
+  };
+
+  const columns = [
+    "Load #", "Bill to Customer", "Carrier", "Truck", "Trailer",
+    "Driver", "PU Date", "From", "To", "DLY Date", "Last Location",
+    "Status", "Load Rep", "POD Date",
+    {
+      name: "Edit",
+      options: {
+        customBodyRender: (value, tableMeta) => {
+          return (
+            <button className='add-button' onClick={() => handleEditClick(dummyData[tableMeta.rowIndex])}>
+              <h5>Edit</h5>
+            </button>
+          );
+        }
+      }
+    }
+  ];
 
   const options = {
     selectableRows: false, // Adjust as needed
@@ -71,6 +100,7 @@ const LoadBoard = () => {
       </div>
       <TableComponent title="LoadBoard" data={dummyData} columns={columns} options={options} />
       {showAddloadPopup && <Addload handleClosePopup={handleCloseAddloadPopup} />}
+      {showEditloadPopup && <Editload rowData={selectedRowData} handleClosePopup={handleCloseEditloadPopup} />}
     </div>
   );
 };

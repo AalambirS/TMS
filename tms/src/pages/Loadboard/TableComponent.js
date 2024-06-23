@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 import MUIDataTable from 'mui-datatables';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
-import { SidebarContext } from './SidebarContext';
+import { SidebarContext } from '../../SidebarContext';
 
 
 // TableComponent is a reuseable component that we can pass title, data, column names, and options to.

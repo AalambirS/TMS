@@ -1,6 +1,5 @@
 import './App.css';
 import Header from './Components/Header/Header';
-import Loadboard from './Loadboard';
 import Drivers from './pages/Drivers';
 import { Route, Routes } from "react-router-dom";
 import { Link } from 'react-router-dom';
@@ -9,7 +8,7 @@ import "boxicons";
 import { SidebarProvider } from './SidebarContext';
 import Classes from './App.module.css'
 import Sidebar from './Components/Sidebar/Sidebar';
-// import Loadboard from './pages/Loadboard/Loadboard';
+import Loadboard from './pages/Loadboard/Loadboard';
 
 
 function App() {
@@ -28,8 +27,10 @@ function App() {
                 </div>
                 <div className={Classes.routesContainer} >
                     <Routes>
+                        <Route path='/' element={<Loadboard />} />
                         <Route path='/loadboard' element={<Loadboard />} />
                         <Route path='/drivers' element={<Drivers />} />
+                        <Route path='*' element={<Loadboard />} />
                     </Routes>
                 </div>
             </div>
