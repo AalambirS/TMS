@@ -25,7 +25,7 @@ function App() {
     return (
         <div className="App">
             <Header />
-            <div className='mainGrid' style={{ gridTemplateColumns: isExpanded ? '20% 80%' : '10% 90%' }} >
+            <div className='mainGrid' style={{ gridTemplateColumns: isExpanded ? '20% 80%' : '8% 92%' }} >
                 <div>
                     <Sidebar toggleExpanded={toggleExpanded} isExpanded={isExpanded} />
                 </div>
