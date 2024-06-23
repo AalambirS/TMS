@@ -18,15 +18,15 @@ const TableComponent = ({ title, data, columns, options }) => {
   const getMuiTheme = () =>
     createTheme({
       typography: {
-        fontFamily: 'Poppins',
-        fontSize: 15
+        fontFamily: 'Manrope',
+        fontSize: 14,
       },
       palette: {
         background: {
-          paper: '#1e293b',
-          default: '#0f172a',
+          paper: 'white',
+          default: 'white',
         },
-        mode: 'dark',
+        mode: 'light',
       },
       components: {
         MuiTableHead: { // Targets the table header
@@ -40,10 +40,12 @@ const TableComponent = ({ title, data, columns, options }) => {
           styleOverrides: {
             head: {
               padding: '10px 4px',
+              // color: 'black'
             },
             body: {
               padding: '7px 15px',
               fontSize: 12,
+              fontWeight: 500,
             },
           },
         },
@@ -67,58 +69,3 @@ const TableComponent = ({ title, data, columns, options }) => {
 };
 
 export default TableComponent;
-
-
-// import React, { useState, useEffect } from 'react'
-// import MUIDataTable from "mui-datatables"
-// import "./TableComponent.css"
-// import { createTheme, ThemeProvider } from "@mui/material/styles"
-
-
-// const TableComponent = ({ data, columns, options }) => {
-
-
-//   const getMuiTheme = () => createTheme({
-//   typography: {
-//     fontFamily: "Poppins",
-//   },
-//   palette: {
-//     background: {
-//       paper: "#1e293b",
-//       default: "#0f172a"
-//     },
-//     mode: "dark",
-//   },
-//   components: {
-//     MuiTableCell: {
-//       styleOverrides: {
-//         head: {
-//           padding: "10px 4px",
-//         },
-//         body: {
-//           padding: "7px 15px",
-//         }
-//       }
-//     }
-//   }
-// })
-
-//   return (
-//     <div className='container'>
-//       <div className='table'>
-//         <ThemeProvider theme={getMuiTheme}>
-//         <MUIDataTable
-//           title={"Employee List"}
-//           data={data}
-//           columns={columns}
-//           options={options}
-//         />
-
-//         </ThemeProvider>
-//       </div>
-
-//     </div>
-//   )
-// }
-
-// export default TableComponent
