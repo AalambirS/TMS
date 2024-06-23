@@ -30,6 +30,20 @@
     color: white;
 }
 
+.add-button-mini{
+    padding: 2px 10px;
+    border-radius: 7px;
+    background: none;
+    border: none;
+    background: #ED3A23;
+    cursor: pointer;
+}
+
+.add-button-mini h5{
+    color: white;
+    font-size: 13px;
+}
+
 .table.active {
     max-width: calc(100% - 200px);
 }

@@ -153,3 +153,13 @@
 .Sidebar.active .main-content {
     width: calc(100% - 200px);
 }
+
+.mainGrid{
+    min-height: 100vh;
+    display: grid;
+    grid-template-columns: 20% 80%;
+}
+
+.routesContainer{
+    padding: 2rem;
+}

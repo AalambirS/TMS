@@ -6,6 +6,13 @@
     padding: 2rem 1.5rem;
 }
 
+.sidebarActive{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+}
+
 .sidebarTop {
     display: flex;
     justify-content: space-between;

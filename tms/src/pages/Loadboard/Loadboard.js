@@ -41,7 +41,7 @@ const LoadBoard = () => {
       options: {
         customBodyRender: (value, tableMeta) => {
           return (
-            <button className='add-button' onClick={() => handleEditClick(dummyData[tableMeta.rowIndex])}>
+            <button className='add-button-mini' onClick={() => handleEditClick(dummyData[tableMeta.rowIndex])}>
               <h5>Edit</h5>
             </button>
           );

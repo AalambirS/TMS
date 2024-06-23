@@ -6,7 +6,6 @@ import { Link } from 'react-router-dom';
 import React, { useState } from 'react';
 import "boxicons";
 import { SidebarProvider } from './SidebarContext';
-import Classes from './App.module.css'
 import Sidebar from './Components/Sidebar/Sidebar';
 import Loadboard from './pages/Loadboard/Loadboard';
 
@@ -18,19 +17,23 @@ function App() {
         setIsActive(!isActive); // Toggle active state
     };
 
+    const [isExpanded, setisExpanded] = useState(true);
+    const toggleExpanded = () => {
+        setisExpanded(!isExpanded);
+    }
+
     return (
         <div className="App">
             <Header />
-            <div className={Classes.mainGrid} >
+            <div className='mainGrid' style={{ gridTemplateColumns: isExpanded ? '20% 80%' : '10% 90%' }} >
                 <div>
-                    <Sidebar />
+                    <Sidebar toggleExpanded={toggleExpanded} isExpanded={isExpanded} />
                 </div>
-                <div className={Classes.routesContainer} >
+                <div className='routesContainer' >
                     <Routes>
                         <Route path='/' element={<Loadboard />} />
                         <Route path='/loadboard' element={<Loadboard />} />
                         <Route path='/drivers' element={<Drivers />} />
-                        <Route path='*' element={<Loadboard />} />
                     </Routes>
                 </div>
             </div>
