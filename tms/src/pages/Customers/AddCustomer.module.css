@@ -1,0 +1,254 @@
+.popupBackground {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgb(0 0 0 / 55%);
+    /* Light dark background */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+}
+
+.popup {
+    position: relative;
+    /* background: #fff; */
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    min-height: 90vh;
+    width: 90vw;
+    padding: 20px 2rem;
+    z-index: 1001;
+    overflow: auto;
+    background-image: linear-gradient(120deg, #fdfbfb 0%, #ebedee 100%);
+}
+
+.popup>div {
+    /* display: grid;
+    grid-template-columns: repeat(3, 1fr); */
+    animation: fadeIn 0.2s ease-in-out forwards;
+    max-height: 80vh;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+.popup>h1 {
+    width: 100%;
+    text-align: center;
+}
+
+.popupLeft {
+    /* border: 1px solid black; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* .popupLeft > div{
+    width: fit-content;
+} */
+.login_img {
+    height: 13rem;
+    /* margin-top: 1rem; */
+}
+
+.login_img img {
+    height: 100%;
+}
+
+.popupRight {
+    /* border: 1px solid black; */
+    display: flex;
+    flex-direction: column;
+    /* justify-content: center; */
+    align-items: center;
+}
+
+.form {
+    /* border: 1px solid rgba(56, 65, 74, 0.11); */
+    /* background: #FFFFFF; */
+    padding: 5px 20px;
+    border-radius: 10px;
+}
+
+.popup>h1 {
+    text-align: center;
+    font-size: 24px;
+    font-family: "Poppins", serif;
+    font-weight: 600;
+    color: #414141;
+    margin: 0;
+    width: 100%;
+}
+
+.form label h5 {
+    font-size: 14px;
+    margin-bottom: 5px;
+    font-weight: 500;
+    color: #0a033c;
+    margin-left: 8px;
+}
+
+.form input, select, textarea {
+    width: 100%;
+    border: 1px solid rgba(30, 30, 30, 0.1);
+    padding: 8px 15px;
+    border-radius: 10px;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    font-family: 'Inter', sans-serif;
+    color: #1e1e1eb3;
+    outline: none;
+    width: 15rem;
+}
+
+.form input,textarea::placeholder {
+    color: rgba(178, 178, 178, 0.521);
+}
+
+.checkbox {
+    display: flex;
+    gap: 10px;
+    margin-top: 10px;
+    margin-bottom: 7px;
+}
+
+.check {
+    border-radius: 5px !important;
+    width: 19px !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    color: #002444cf !important;
+}
+
+.form button {
+    background-color: #002444cf;
+    padding: 8px 15px;
+    border-radius: 10px;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    font-family: 'Inter', sans-serif;
+    color: white;
+    border: none;
+    width: 100%;
+    cursor: pointer;
+    text-align: center;
+}
+
+.form>h5 {
+    font-size: 11px;
+    text-align: center;
+    width: 100%;
+    margin: 13px 0;
+    cursor: pointer;
+}
+
+.form>h5 a {
+    color: rgba(30, 30, 30, 0.7);
+    text-decoration: none;
+}
+
+.form>h5:hover {
+    text-decoration: underline;
+}
+
+.below_form_txt {
+    font-size: 11px;
+    text-align: center;
+    width: 100%;
+    /* margin: 13px 0; */
+    font-style: normal;
+    /* font-weight: 500; */
+}
+
+.below_form_txt a {
+    color: rgba(30, 30, 30, 0.4);
+    text-decoration: none;
+}
+
+.below_form_txt span {
+    color: #002444cf;
+    cursor: pointer;
+    margin-left: 2px;
+}
+
+.below_form_txt span:hover {
+    text-decoration: underline;
+}
+
+.xMark {
+    position: absolute;
+    top: 20px;
+    right: 22px;
+    height: 1.7rem;
+    fill: #b3bac55a;
+    cursor: pointer;
+    transition-property: all;
+    transition-duration: 0.2s;
+}
+
+.xMark:hover {
+    fill: #b3bac5ac;
+}
+
+.nav_img img {
+    height: 4rem;
+    border-radius: 13px;
+}
+
+.flexAlign2{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-bottom: 1rem;
+}
+
+.tableHeader{
+    border: 1px solid #ed3a235e;
+    background: #ed3a230d;
+    padding: 4px 15px;
+    display: flex;
+    justify-content: space-between;
+    align-content: center;
+}
+
+.tableBody{
+    background: white;
+    padding: 15px;
+    margin-bottom: 2rem;
+    box-shadow: 0px 2px 3px -2px #0000002e;
+}
+
+@media (max-width: 700px) {
+    .popup>div {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .line_con {
+        display: none !important;
+    }
+
+    .below_form_txt {
+        margin-bottom: 1rem;
+    }
+
+    .popup {
+        max-width: fit-content;
+        padding: 25px;
+    }
+}
+
+@media (max-width: 480px) {}

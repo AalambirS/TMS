@@ -58,20 +58,20 @@ function Sidebar() {
                     <span className='tooltip'>Pick/Drop</span>
                 </li>
 
-                {/* <li>
-            <a to='#'>
-                <box-icon className="icon" name="factory" type="solid"></box-icon>
-                <span className='nav-item'>Company</span>
-            </a>
-            <span className='tooltip'>Company</span>
-            </li> */}
-
                 <li>
                     <Link to='/drivers'>
                         <box-icon className="icon" name="group" type="solid"></box-icon>
                         <span className='nav-item'>Drivers</span>
                     </Link>
                     <span className='tooltip'>Drivers</span>
+                </li>
+
+                <li>
+                    <Link to='/customers'>
+                        <box-icon className="icon" name="wallet" type="solid"></box-icon>
+                        <span className='nav-item'>Bill to Customers</span>
+                    </Link>
+                    <span className='tooltip'>Bill to Customers</span>
                 </li>
 
                 <li>

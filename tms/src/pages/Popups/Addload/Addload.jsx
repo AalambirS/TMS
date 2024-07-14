@@ -1,6 +1,7 @@
 import React, { useState, useContext } from "react";
 import { NavLink, useNavigate } from 'react-router-dom'
 import Classes from "./Addload.module.css";
+import { addLoadToFirestore } from "../../../services/firebase";
 
 const Addload = ({ handleClosePopup }) => {
     const [formdata, setformdata] = useState({
@@ -15,6 +16,9 @@ const Addload = ({ handleClosePopup }) => {
     }
     const handleSubmit = async (e) => {
         e.preventDefault();
+
+        const newFormData = new FormData(e.target);
+        await addLoadToFirestore(newFormData);
     }
     const handlePopupClick = (e) => {
         e.stopPropagation(); // Prevent the click event from reaching the popupBackground

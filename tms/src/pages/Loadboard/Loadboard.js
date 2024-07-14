@@ -1,6 +1,6 @@
-import React, { useContext, useState } from 'react';
-import TableComponent from './TableComponent';
-import { SidebarProvider } from '../../SidebarContext';
+import React, { useContext, useEffect, useState } from 'react';
+import TableComponent from '../../Components/Table/TableComponent';
+import {getLoads} from '../../services/firebase'
 import "./Loadboard.css"
 import Addload from '../Popups/Addload/Addload';
 import Editload from '../Popups/Editload/Editload';
@@ -11,10 +11,21 @@ import Editload from '../Popups/Editload/Editload';
 // SidebarProvider is imported to get the active state of the sidebar, but it did not work as intended so feel free to delete.
 
 const LoadBoard = () => {
+
   // const { isActive } = useContext(SidebarContext);
 
   // const tableClass = isActive ? 'table active' : 'table';
-  //const [loadBoardData, setLoadBoardData] = useState([]);
+  const [loadBoardData, setLoadBoardData] = useState([]);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const ret_loads = await getLoads();
+      setLoadBoardData(ret_loads)
+    }
+    fetchData();
+    
+  }, []);
+
   const [selectedRowData, setSelectedRowData] = useState(null);
   const [showAddloadPopup, setshowAddloadPopup] = useState(false);
   const handleCloseAddloadPopup = () => {
@@ -53,7 +64,7 @@ const LoadBoard = () => {
   const options = {
     selectableRows: false, // Adjust as needed
     elevation: 4,
-    rowsPerPage: 5,
+    rowsPerPage: 10,
     rowsPerPageOptions: [5, 10, 20, 40],
   };
 
@@ -90,6 +101,8 @@ const LoadBoard = () => {
     [30, 'GHI Carriers', 'RapidTransit', 'Truck-130', 'Trailer-DD', 'James Davis', '11/10/2024 \n @ 01:00PM', 'Houston, TX', 'Denver, CO', '11/13/2024 \n @ 10:00PM', 'New Orleans, LA', 'In Transit', 'Lily Aldrin', '11/13/2024'],
   ];
 
+
+
   return (
     <div>
       <div className='loadboardHeader mb20' >
@@ -98,7 +111,7 @@ const LoadBoard = () => {
           <button className='add-button' onClick={() => { setshowAddloadPopup(true) }} > <h5>Add Load</h5> </button>
         </div>
       </div>
-      <TableComponent title="LoadBoard" data={dummyData} columns={columns} options={options} />
+      <TableComponent title="LoadBoard" data={loadBoardData} columns={columns} options={options} />
       {showAddloadPopup && <Addload handleClosePopup={handleCloseAddloadPopup} />}
       {showEditloadPopup && <Editload rowData={selectedRowData} handleClosePopup={handleCloseEditloadPopup} />}
     </div>

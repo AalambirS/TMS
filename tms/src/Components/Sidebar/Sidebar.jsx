@@ -78,7 +78,7 @@ export default function Sidebar({ toggleExpanded, isExpanded }) {
                     className={`${Classes.navItem} ${activeNav === 5 ? Classes.navActive : ''}`}
                     onClick={() => { handleClick(5) }}
                 >
-                    <box-icon className="icon" name="money" type="solid"></box-icon>
+                    <box-icon className="icon" name="money"></box-icon>
                     {isExpanded &&
                         <h5>Revenue</h5>
                     }
@@ -91,6 +91,26 @@ export default function Sidebar({ toggleExpanded, isExpanded }) {
                     <box-icon className="icon" name="receipt" type="solid"></box-icon>
                     {isExpanded &&
                         <h5>Expenses</h5>
+                    }
+                </Link>
+
+                <Link to='/customers'
+                    className={`${Classes.navItem} ${activeNav === 7 ? Classes.navActive : ''}`}
+                    onClick={() => { handleClick(7) }}
+                >
+                    <box-icon className="icon" name="wallet" type="solid"></box-icon>
+                    {isExpanded &&
+                        <h5>Bill to Customers</h5>
+                    }
+                </Link>
+
+                <Link to='/employees'
+                    className={`${Classes.navItem} ${activeNav === 8 ? Classes.navActive : ''}`}
+                    onClick={() => { handleClick(8) }}
+                >
+                    <box-icon className="icon" name="cabinet" type="solid"></box-icon>
+                    {isExpanded &&
+                        <h5>Employees</h5>
                     }
                 </Link>
 
