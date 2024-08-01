@@ -18,11 +18,11 @@ const LoadBoard = () => {
   const [loadBoardData, setLoadBoardData] = useState([]);
 
   useEffect(() => {
-    const fetchData = async () => {
-      const ret_loads = await getLoads();
-      setLoadBoardData(ret_loads)
-    }
-    fetchData();
+    // const fetchData = async () => {
+    //   const ret_loads = await getLoads();
+    //   setLoadBoardData(ret_loads)
+    // }
+    // fetchData();
     
   }, []);
 
@@ -102,7 +102,6 @@ const LoadBoard = () => {
   ];
 
 
-
   return (
     <div>
       <div className='loadboardHeader mb20' >
@@ -111,7 +110,7 @@ const LoadBoard = () => {
           <button className='add-button' onClick={() => { setshowAddloadPopup(true) }} > <h5>Add Load</h5> </button>
         </div>
       </div>
-      <TableComponent title="LoadBoard" data={loadBoardData} columns={columns} options={options} />
+      <TableComponent title="LoadBoard" data={dummyData} columns={columns} options={options} />
       {showAddloadPopup && <Addload handleClosePopup={handleCloseAddloadPopup} />}
       {showEditloadPopup && <Editload rowData={selectedRowData} handleClosePopup={handleCloseEditloadPopup} />}
     </div>

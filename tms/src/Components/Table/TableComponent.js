@@ -23,10 +23,10 @@ const TableComponent = ({ title, data, columns, options }) => {
       },
       palette: {
         background: {
-          paper: 'white',
+          paper: '#2A2D34',
           default: 'white',
         },
-        mode: 'light',
+        mode: 'dark',
       },
       components: {
         MuiTableHead: { // Targets the table header
@@ -39,7 +39,7 @@ const TableComponent = ({ title, data, columns, options }) => {
         MuiTableCell: {
           styleOverrides: {
             head: {
-              padding: '10px 4px',
+              padding: '8px 4px',
               // color: 'black'
             },
             body: {

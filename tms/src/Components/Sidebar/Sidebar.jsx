@@ -5,10 +5,16 @@ import { Link } from 'react-router-dom';
 
 export default function Sidebar({ toggleExpanded, isExpanded }) {
     const [activeNav, setactiveNav] = useState(1);
+    const [subMenuOpen, setSubMenuOpen] = useState({}); // Object for individual sub-menu states
+
 
     const handleClick = (value) => {
         setactiveNav(value);
+        console.log(subMenuOpen)
+        setSubMenuOpen({ ...subMenuOpen, [value]: !subMenuOpen[value] || false });
+        console.log(subMenuOpen)
     }
+
 
     return (
         <div className={`${Classes.sidebar} ${!isExpanded && Classes.sidebarActive}`} >
@@ -53,8 +59,29 @@ export default function Sidebar({ toggleExpanded, isExpanded }) {
                         <h5>Pick/Drop</h5>
                     }
                 </Link>
-
-                <Link to='/drivers'
+                
+                <div className={`${Classes.navItem} ${activeNav === 3 ? Classes.navActive : ''}`}
+                    onClick={() => handleClick(3)}>
+                    <box-icon className="icon" name="group" type="solid"></box-icon>
+                    {isExpanded &&
+                        <h5>Safety</h5>
+                    }
+                    <svg className="dropdown-icon" fill="black" height="10px" viewBox="0 0 256 256"><path d="M153 128h16l-80 80l-80-80z"/></svg>
+                </div>
+                    {isExpanded && subMenuOpen[3] && (
+                        <div key={3} className={Classes.subMenu}> {/* Key set to 3 for Safety */}
+                            <Link to='/drivers' className={Classes.subNavItem}>
+                                <h5>Drivers</h5>
+                            </Link>
+                            <Link to='/equipment' className={Classes.subNavItem}>
+                                <h5>Tractors</h5>
+                            </Link>
+                            <Link to='/equipment' className={Classes.subNavItem}>
+                                <h5>Trailers</h5>
+                            </Link>
+                        </div>
+                    )}
+                {/* <Link to='/drivers'
                     className={`${Classes.navItem} ${activeNav === 3 ? Classes.navActive : ''}`}
                     onClick={() => { handleClick(3) }}
                 >
@@ -62,9 +89,9 @@ export default function Sidebar({ toggleExpanded, isExpanded }) {
                     {isExpanded &&
                         <h5>Drivers</h5>
                     }
-                </Link>
+                </Link> */}
 
-                <Link to='/equipment'
+                {/* <Link to='/equipment'
                     className={`${Classes.navItem} ${activeNav === 4 ? Classes.navActive : ''}`}
                     onClick={() => { handleClick(4) }}
                 >
@@ -72,11 +99,11 @@ export default function Sidebar({ toggleExpanded, isExpanded }) {
                     {isExpanded &&
                         <h5>Equipment</h5>
                     }
-                </Link>
+                </Link> */}
 
                 <Link to='/revenue'
-                    className={`${Classes.navItem} ${activeNav === 5 ? Classes.navActive : ''}`}
-                    onClick={() => { handleClick(5) }}
+                    className={`${Classes.navItem} ${activeNav === 4 ? Classes.navActive : ''}`}
+                    onClick={() => { handleClick(4) }}
                 >
                     <box-icon className="icon" name="money"></box-icon>
                     {isExpanded &&
@@ -85,14 +112,33 @@ export default function Sidebar({ toggleExpanded, isExpanded }) {
                 </Link>
 
                 <Link to='/expenses'
-                    className={`${Classes.navItem} ${activeNav === 6 ? Classes.navActive : ''}`}
-                    onClick={() => { handleClick(6) }}
+                    className={`${Classes.navItem} ${activeNav === 5 ? Classes.navActive : ''}`}
+                    onClick={() => { handleClick(5) }}
                 >
                     <box-icon className="icon" name="receipt" type="solid"></box-icon>
                     {isExpanded &&
                         <h5>Expenses</h5>
                     }
                 </Link>
+
+                <div className={`${Classes.navItem} ${activeNav === 6 ? Classes.navActive : ''}`}
+                    onClick={() => handleClick(6)}>
+                    <box-icon className="icon" name="group" type="solid"></box-icon>
+                    {isExpanded &&
+                        <h5>Employees</h5>
+                    }
+                    <svg className="dropdown-icon" fill="black" height="10px" viewBox="0 0 256 256"><path d="M153 128h16l-80 80l-80-80z"/></svg>
+                </div>
+                    {isExpanded && subMenuOpen[6] && (
+                        <div key={6} className={Classes.subMenu}> {/* Key set to 3 for Safety */}
+                            <Link to='/employees' className={Classes.subNavItem}>
+                                <h5>Company Employees/Agents</h5>
+                            </Link>
+                            <Link to='/drivers' className={Classes.subNavItem}>
+                                <h5>Drivers</h5>
+                            </Link>
+                        </div>
+                    )}
 
                 <Link to='/customers'
                     className={`${Classes.navItem} ${activeNav === 7 ? Classes.navActive : ''}`}
@@ -104,17 +150,8 @@ export default function Sidebar({ toggleExpanded, isExpanded }) {
                     }
                 </Link>
 
-                <Link to='/employees'
-                    className={`${Classes.navItem} ${activeNav === 8 ? Classes.navActive : ''}`}
-                    onClick={() => { handleClick(8) }}
-                >
-                    <box-icon className="icon" name="cabinet" type="solid"></box-icon>
-                    {isExpanded &&
-                        <h5>Employees</h5>
-                    }
-                </Link>
-
             </div>
         </div>
     )
 }
+

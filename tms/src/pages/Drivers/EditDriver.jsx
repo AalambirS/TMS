@@ -3,9 +3,7 @@ import { NavLink, useNavigate } from 'react-router-dom';
 import Classes from "./EditDriver.module.css";
 
 const EditDriver = ({ handleClosePopup, rowData }) => {
-    const [formdata, setformdata] = useState({
-        field1: '',
-    });
+    const [formdata, setformdata] = useState({ ...rowData });
     function changeValue(event) {
         const { name, value } = event.target;
         setformdata({
@@ -16,6 +14,7 @@ const EditDriver = ({ handleClosePopup, rowData }) => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
+        console.log(formdata['First Name']);
     }
     const handlePopupClick = (e) => {
         e.stopPropagation(); // Prevent the click event from reaching the popupBackground
@@ -45,11 +44,10 @@ const EditDriver = ({ handleClosePopup, rowData }) => {
                                     <div>
                                         <label> <h5>First  Name *</h5> </label>
                                         <input
-                                            placeholder='1-124-6549889'
-                                            name='first_name'
+                                            value={formdata['First Name']}
+                                            name='First Name'
                                             type='text'
                                             onChange={changeValue}
-                                            disabled
                                         />
                                     </div>
                                     <div>

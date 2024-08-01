@@ -32,7 +32,7 @@
     padding: 7px 20px;
     border-radius: 7px;
     color: black;
-    margin-bottom: 5px;
+    margin-bottom: 15px;
     transition-property: all;
     transition-duration: 0.2s;
 }
@@ -57,4 +57,48 @@
 
 .navActive svg{
     fill: white !important;
+}
+
+.subMenu {
+    display: block;  /*Initially hidden */
+    padding: 10px;
+    border-radius: 5px;
+    margin-top: 5px;
+    background-color: #e5250c; /* Optional background for subMenu */
+    visibility: visible;
+    transition: all 0.2s ease-in-out;
+  }
+  
+  .subMenu.open {  /* Show subMenu when open */
+    display: block;
+  }
+  
+  .subNavItem {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 5px 10px;
+    color: black;
+    transition-property: all;
+    transition-duration: 0.2s;
+    text-decoration: none; /* Remove underline for links */
+  }
+  
+  .subNavItem:hover {
+    background-color: #ddd;
+  }
+
+  .dropdown-icon {
+    /* Style for dropdown icon */
+    margin-left: 5px;
+    transform: rotate(0deg); /* Initial rotation */
+    transition: transform 0.2s ease-in-out;
+  }
+  
+  .navItem.navActive .dropdown-icon {
+    transform: rotate(180deg); /* Rotate icon on active */
+  }
+
+  .safety-container {
+    position: relative;  /* Make container a positioning context */
 }

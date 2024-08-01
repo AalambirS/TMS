@@ -75,7 +75,6 @@ const Addload = ({ handleClosePopup }) => {
                                             name='first_name'
                                             type='text'
                                             onChange={changeValue}
-                                            disabled
                                         />
                                     </div>
                                     <div>
@@ -115,7 +114,6 @@ const Addload = ({ handleClosePopup }) => {
                                             name='first_name'
                                             type='text'
                                             onChange={changeValue}
-                                            disabled
                                         />
                                     </div>
                                     <div>

@@ -2,20 +2,28 @@ import React, { useState, useContext } from "react";
 import { NavLink, useNavigate } from 'react-router-dom';
 import Classes from "./EditEmployee.module.css";
 
-const EditEmployee = ({ handleClosePopup, rowData }) => {
-    const [formdata, setformdata] = useState({
-        field1: '',
-    });
+const EditEmployee = ({ handleClosePopup, rowData, updateEmployeeData }) => {
+    const {employeeNumber, firstName} = rowData || {};
+    const [formData, setFormData] = useState({
+        employeeNumber: employeeNumber || '',
+        firstName: firstName || '',
+        ...rowData // Spread all properties from rowData
+      });
     function changeValue(event) {
         const { name, value } = event.target;
-        setformdata({
-            ...formdata,
+        setFormData({
+            ...formData,
             [name]: value,
         });
+        
     }
 
     const handleSubmit = async (e) => {
         e.preventDefault();
+        // console.log(rowData)
+        // updateEmployeeData(formData);
+        // console.log(rowData)
+        
     }
     const handlePopupClick = (e) => {
         e.stopPropagation(); // Prevent the click event from reaching the popupBackground
@@ -30,7 +38,7 @@ const EditEmployee = ({ handleClosePopup, rowData }) => {
             <div className={Classes.popupBackground} onClick={handleBackgroundClick}>
                 <form onSubmit={handleSubmit} className={Classes.popup} onClick={handlePopupClick}>
                     <div className="flexBetween ml20 mr30" >
-                        <div><h2>Edit Employee ({rowData[0]})</h2></div>
+                        <div><h2>Edit Employee ({formData.employeeNumber})</h2></div>
                         <div>
                             <button className="add-button BGgreen" > <h5>Confirm</h5> </button>
                         </div>
@@ -38,48 +46,119 @@ const EditEmployee = ({ handleClosePopup, rowData }) => {
                     <div>
                         <div className={Classes.form} >
                             <div className={Classes.tableHeader} >
-                                <h4>Driver Profile</h4>
+                                <h4>User Info</h4>
                             </div>
                             <div className={Classes.tableBody} >
                                 <div className={Classes.flexAlign2} >
                                     <div>
-                                        <label> <h5>First  Name *</h5> </label>
+                                        <label> <h5>Employee Number</h5> </label>
                                         <input
-                                            placeholder='1-124-6549889'
-                                            name='first_name'
+                                            placeholder=''
+                                            name='employeeNumber'
                                             type='text'
                                             onChange={changeValue}
-                                            disabled
+                                            value={formData.employeeNumber}
+                                        />
+                                    </div>
+                                    <div>
+                                        <label> <h5>First  Name *</h5> </label>
+                                        <input
+                                            placeholder='First Name'
+                                            name='First Name'
+                                            type='text'
+                                            onChange={changeValue}
+                                            value={formData.firstName}
+                                        />
+                                    </div>
+                                    <div>
+                                        <label> <h5>Middle Name</h5> </label>
+                                        <input
+                                            placeholder='Middle Name'
+                                            name='mid_name'
+                                            type='text'
+                                            onChange={changeValue}
+                                            
                                         />
                                     </div>
                                     <div>
                                         <label> <h5>Last Name *</h5> </label>
                                         <input
-                                            placeholder='1-124-6549889'
-                                            name='last_name'
+                                            placeholder='Last Name'
+                                            name='Last Name'
                                             type='text'
                                             onChange={changeValue}
-                                            disabled
+                                            
                                         />
                                     </div>
+                                    <div>
+                                        <label> <h5>Username *</h5> </label>
+                                        <input
+                                            placeholder='username'
+                                            name='Username'
+                                            type='text'
+                                            onChange={changeValue}
+                                            
+                                        />
+                                    </div>
+                                </div>
+                                <div className={Classes.flexAlign2} >
                                     <div>
                                         <label> <h5>Date of Birth*</h5> </label>
                                         <input
                                             placeholder='1-124-6549889'
                                             name='date_of_birth'
                                             type='date'
-                                            onChange={changeValue}
-                                            disabled
+                                            onChange={changeValue}  
                                         />
                                     </div>
                                     <div>
-                                        <label> <h5>Employee Code</h5> </label>
+                                        <label> <h5>SSN</h5> </label>
                                         <input
-                                            placeholder='e_code'
-                                            name='Employee Code'
+                                            placeholder=''
+                                            name='SSN'
                                             type='text'
                                             onChange={changeValue}
                                             style={{width:'6rem'}}
+                                        />
+                                    </div>
+                                    <div>
+                                        <label> <h5>Driver's License #</h5> </label>
+                                        <input
+                                            placeholder=''
+                                            name='license'
+                                            type='text'
+                                            onChange={changeValue}
+                                            style={{width:'12rem'}}
+                                        />
+                                    </div>
+                                    <div>
+                                        <label> <h5>DL State Issued</h5> </label>
+                                        <input
+                                            placeholder=''
+                                            name='license_state'
+                                            type='text'
+                                            onChange={changeValue}
+                                            style={{width:'6rem'}}
+                                        />
+                                    </div>
+                                    <div>
+                                        <label> <h5>Email (Company)</h5> </label>
+                                        <input
+                                            placeholder=''
+                                            name='comp_email'
+                                            type='text'
+                                            onChange={changeValue}
+                                            style={{width:'12rem'}}
+                                        />
+                                    </div>
+                                    <div>
+                                        <label> <h5>Email (Personal)</h5> </label>
+                                        <input
+                                            placeholder=''
+                                            name='personal_email'
+                                            type='text'
+                                            onChange={changeValue}
+                                            style={{width:'12rem'}}
                                         />
                                     </div>
                                 </div>
@@ -104,466 +183,132 @@ const EditEmployee = ({ handleClosePopup, rowData }) => {
                                         />
                                     </div>
                                     <div>
-                                        <label> <h5>Email</h5> </label>
-                                        <input
-                                            placeholder='Email Address'
-                                            name='email'
-                                            type='text'
-                                            onChange={changeValue}
-                                            style={{width:'6rem'}}
-                                        />
-                                    </div>
-                                    <div>
-                                        <label> <h5>Driver Type</h5> </label>
-                                        <select>
-                                            <option>Solo</option>
-                                            <option>Team</option>
+                                        <label> <h5>Employee Type</h5> </label>
+                                        <select onChange={changeValue}>
+                                            <option value="owner" name="Employee Type">Owner</option>
+                                            <option value="employee" name="Employee Type">Company Employee</option>
+                                            <option value="agent" name="Employee Type">Agent</option>
                                         </select>
                                     </div>
-                                </div>
-                                <div className={Classes.flexAlign2} >
                                     <div>
-                                        <label> <h5>Driver SSN*</h5> </label>
-                                        <input
-                                            placeholder='Enter SSN'
-                                            name='SSN'
-                                            type='numeric'
-                                            onChange={changeValue}
-                                        />
-                                    </div>
-                                    <div>
-                                        <label> <h5>CDL Number*</h5> </label>
-                                        <input
-                                            placeholder='Enter CDL Number'
-                                            name='cdl_num'
-                                            type='numeric'
-                                            onChange={changeValue}
-                                        />
-                                    </div>
-                                    <div>
-                                        <label> <h5>CDL State</h5> </label>
+                                        <label> <h5>Start Date *</h5> </label>
                                         <input
                                             placeholder=''
-                                            name='cdl_state'
-                                            type='text'
-                                            onChange={changeValue}
+                                            name='Start Date'
+                                            type='date'
+                                            onChange={changeValue}  
                                         />
                                     </div>
                                     <div>
-                                        <label> <h5>CDL Type/Class*</h5> </label>
-                                        <select>
-                                            <option>A</option>
-                                            <option>B</option>
-                                            <option>C</option>
-                                        </select>
+                                        <label> <h5>Quit Date</h5> </label>
+                                        <input
+                                            placeholder=''
+                                            name='Quit Date'
+                                            type='date'
+                                            onChange={changeValue}  
+                                        />
                                     </div>
                                 </div>
-                                <hr></hr>
-                                <div className={Classes.subclass}>
-                                <div className={Classes.flexAlign2} >
-                                        <div>
-                                            <label> <h5>Driver Ownership</h5> </label>
-                                            <select>
-                                                <option>Driver</option>
-                                                <option>Company</option>
-                                            </select>
-                                        </div>
-
-                                        <div>
-                                        <label> <h5>Passport</h5> </label>
-                                        <select>
-                                            <option>Yes</option>
-                                            <option>No</option>
-                                        </select>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <hr></hr>
-                                    <div className={Classes.subclass}>
-                                    <div className={Classes.flexAlign2} >
-                                        <div>
-                                            <label> <h5>Address</h5> </label>
-                                            <input
-                                            placeholder='Street Number and Name'
-                                            name='address'
-                                            type='text'
-                                            onChange={changeValue}
-                                            style={{width:'12rem'}}
-                                            />
-                                        </div>
-
-                                        <div>
-                                            <label> <h5>City</h5> </label>
-                                            <input
-                                            placeholder='City'
-                                            name='city'
-                                            type='text'
-                                            onChange={changeValue}
-                                            style={{width:'8rem'}}
-                                            />
-                                        </div>
-                                        <div>
-                                            <label> <h5>State</h5> </label>
-                                            <input
-                                            placeholder='State'
-                                            name='state'
-                                            type='text'
-                                            onChange={changeValue}
-                                            style={{width:'6rem'}}
-                                            />
-                                        </div>
-                                        <div>
-                                            <label> <h5>Country</h5> </label>
-                                            <input
-                                            placeholder='Country'
-                                            name='country'
-                                            type='text'
-                                            onChange={changeValue}
-                                            style={{width:'6rem'}}
-                                            />
-                                        </div>
-                                        <div>
-                                            <label> <h5>Zipcode</h5> </label>
-                                            <input
-                                            placeholder='Zip'
-                                            name='zipcode'
-                                            type='text'
-                                            onChange={changeValue}
-                                            style={{width:'6rem'}}
-                                            />
-                                        </div>
-                                    </div>
-                                </div>
-                                <hr></hr>
-                                <div className={Classes.subclass}>
-                                    <div className={Classes.flexAlign2}>
-                                        <div>
-                                            <label> <h5>Status</h5> </label>
-                                            <select>
-                                                <option>Inactive</option>
-                                                <option>Active</option>
-                                            </select>
-                                        </div>
-                                        <div>
-                                            <label> <h5>Approved</h5> </label>
-                                            <select>
-                                                <option>Yes</option>
-                                                <option>No</option>
-                                            </select>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            
-                            <div className={Classes.tableHeader} >
-                                <h4>Driver Experience</h4>
-                            </div>
-                            <div className={Classes.tableBody} >
                                 <div className={Classes.flexAlign2} >
                                     <div>
-                                        <label> <h5>CDL Driver Since</h5> </label>
-                                        <input
-                                                placeholder='mm-dd-yy'
-                                                name='cdl_since'
-                                                type='date'
-                                                onChange={changeValue}
-                                                style={{ width: '9rem' }}
-                                            />
-                                    </div>
-                                    <div>
-                                        <label> <h5>CDL for YY/MM</h5> </label>
-                                        <input
-                                                placeholder='YY/MM'
-                                                name='cdl_time'
-                                                type='text'
-                                                onChange={changeValue}
-                                                style={{ width: '9rem' }}
-                                            />
-                                    </div>
-                                    <div>
-                                        <label> <h5>Driving School Name</h5> </label>
-                                        <input
-                                                placeholder='Enter School Name'
-                                                name='school_name'
-                                                type='text'
-                                                onChange={changeValue}
-                                                style={{ width: '9rem' }}
-                                            />
-                                    </div>
-                                    <div>
-                                        <label> <h5>Types of Equipment Operated</h5> </label>
+                                        <label> <h5>Reason for Quitting?</h5> </label>
                                         <textarea
-                                            placeholder='Notes'
-                                            name='equipment_notes'
+                                            placeholder=''
+                                            name='quit_reason'
                                             type='text'
                                             onChange={changeValue}
                                             rows={3}
-                                            style={{ width: '15rem' }}
-                                        />
-                                    </div>
-                                    <div>
-                                        <label> <h5>Experience Details</h5> </label>
-                                        <textarea
-                                            placeholder='Notes'
-                                            name='experience_notes'
-                                            type='text'
-                                            onChange={changeValue}
-                                            rows={3}
-                                            style={{ width: '16rem' }}
-                                        />
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div className={Classes.tableHeader} >
-                                <h4>Employment</h4>
-                                <div>
-                                </div>
-                            </div>
-                            <div className={Classes.tableBody} >
-                                <div className={Classes.flexAlign2} >
-                                    <div>
-                                        <label> <h5>Applied Date</h5> </label>
-                                        <input
-                                            placeholder='mm-dd-yy'
-                                            name='applied_date'
-                                            type='date'
-                                            onChange={changeValue}
-                                        />
-                                    </div>
-                                    <div>
-                                        <label> <h5>Hired Date</h5> </label>
-                                        <input
-                                            placeholder='mm-dd-yy'
-                                            name='hire_date'
-                                            type='date'
-                                            onChange={changeValue}
-                                        />
-                                    </div>
-                                    <div>
-                                        <label> <h5>Drive Test Date</h5> </label>
-                                        <input
-                                            placeholder='mm-dd-yy'
-                                            name='test_date'
-                                            type='date'
-                                            onChange={changeValue}
-                                        />
-                                    </div>
-                                    <div>
-                                        <label> <h5>Termination Date</h5> </label>
-                                        <input
-                                        placeholder="mm-dd-yy"
-                                        name="termination"
-                                        type="date"
-                                        onChange={changeValue}
+                                            style={{ width: '64rem' }}
                                         />
                                     </div>
                                 </div>
                                 <div className={Classes.flexAlign2}>
                                     <div>
-                                        <label> <h5>Rehireable</h5> </label>
-                                        <div className="flexAlign10" >
-                                            <select>
-                                                <option>Yes</option>
-                                                <option>No</option>
-                                            </select>  
-                                        </div>
-                                    </div>
-
-                                    <div>
-                                        <label><h5>Pre-Employment Drug Test Done</h5></label>
+                                        <label> <h5>Country</h5> </label>
                                         <input
-                                            placeholder="mm-dd-yy"
-                                            name="pre_drug_test"
-                                            type="date"
+                                            placeholder=''
+                                            name='country'
+                                            type='text'
                                             onChange={changeValue}
+                                            style={{width: '6rem'}}
                                         />
                                     </div>
                                     <div>
-                                        <label><h5>Hiring Notes</h5></label>
+                                        <label> <h5>Address *</h5> </label>
+                                        <input
+                                            placeholder=''
+                                            name='address'
+                                            type='text'
+                                            onChange={changeValue}
+                                            style={{width: '12rem'}}
+                                        />
+                                    </div>
+                                    <div>
+                                        <label> <h5>City *</h5> </label>
+                                        <input
+                                            placeholder=''
+                                            name='city'
+                                            type='text'
+                                            onChange={changeValue}
+                                            style={{width: '6rem'}}
+                                        />
+                                    </div>
+                                    <div>
+                                        <label> <h5>State *</h5> </label>
+                                        <input
+                                            placeholder=''
+                                            name='state'
+                                            type='text'
+                                            onChange={changeValue}
+                                            style={{width: '8rem'}}
+                                        />
+                                    </div>
+                                    <div>
+                                        <label> <h5>Zip *</h5> </label>
+                                        <input
+                                            placeholder=''
+                                            name='zipcode'
+                                            type='numeric'
+                                            onChange={changeValue}
+                                            style={{width: '6rem'}}
+                                        />
+                                    </div>
+                                </div>
+                                <div className={Classes.flexAlign2}>
+                                    <div>
+                                        <label> <h5>Status</h5> </label>
+                                        <select onChange={changeValue}>
+                                            <option value="active" name="Status">Active</option>
+                                            <option value="inactive" name="Status">Inactive</option>
+                                        </select>
+                                    </div>
+                                    <div>
+                                        <label> <h5>Comments</h5> </label>
                                         <textarea
-                                            placeholder='Notes'
-                                            name='hire_notes'
+                                            placeholder=''
+                                            name='comments'
                                             type='text'
                                             onChange={changeValue}
                                             rows={3}
                                             style={{ width: '20rem' }}
                                         />
                                     </div>
-
-
                                 </div>
                             </div>
+                            
                             <div className={Classes.tableHeader} >
-                                <h4>Employment History</h4>
+                                <h4>Emergency Contact</h4>
                                 <div>
                                     <div className="add-button-mini" > <h5>+ Add Item</h5> </div>
                                 </div>
                             </div>
                             <div className={Classes.tableBody} >
                                 <div className={Classes.flexAlign2} >
-                                    
-                                </div>
-                                <div className={Classes.flexAlign2} >
-                                </div>
-                                <div className={Classes.flexAlign2} >
-
-                                </div>
-                                <div className={Classes.flexAlign2} >
-                                    <div>
-        
-                                    </div>
 
                                 </div>
                             </div>
-                            <div className={Classes.tableHeader} >
-                                <h4>Safety</h4>
-                            </div>
-                            <div className={Classes.tableBody} >
-                                <div className={Classes.flexAlign2} >
-                                    <div>
-                                        <label> <h5>CDL Expiration Date</h5> </label>
-                                        <input
-                                            placeholder="mm-dd-yy"
-                                            name="cdl_expire"
-                                            type="date"
-                                            onChange={changeValue}
-                                        />
-                                    </div>
-                                    <div>
-                                        <label> <h5>Medical Card Expiration Date</h5> </label>
-                                        <input
-                                            placeholder="mm-dd-yy"
-                                            name="med_expire"
-                                            type="date"
-                                            onChange={changeValue}
-                                        />
-                                    </div>
 
-                                    <div>
-                                        <label> <h5>Hazmat Endorsement Expiration</h5> </label>
-                                        <input
-                                            placeholder="mm-dd-yy"
-                                            name="hazmat_expire"
-                                            type="date"
-                                            onChange={changeValue}
-                                        />
-                                    </div>
-
-                                    <div>
-                                        <label> <h5>TWIC Card Expiration</h5> </label>
-                                        <input
-                                            placeholder="mm-dd-yy"
-                                            name="twic_expire"
-                                            type="date"
-                                            onChange={changeValue}
-                                        />
-                                    </div>
-                                </div>
-                                <div className={Classes.flexAlign2} >
-                                    <div>
-                                        <label> <h5>Last Road Test</h5> </label>
-                                        <input
-                                            placeholder='mm-dd-yy'
-                                            name='road_test'
-                                            type='date'
-                                            onChange={changeValue}
-                                        />
-                                    </div>
-                                    <div>
-                                        <label> <h5>Last Random Drug Test</h5> </label>
-                                        <input
-                                            placeholder="mm-dd-yy"
-                                            name="rand_drug_test"
-                                            type="date"
-                                            onChange={changeValue}
-                                        />
-                                    </div>
-                                    <div>
-                                        <label> <h5>Last Alcohol Test</h5> </label>
-                                        <input
-                                            placeholder="mm-dd-yy"
-                                            name="alc_test"
-                                            type="date"
-                                            onChange={changeValue}
-                                        />
-                                    </div>
-                                    <div>
-                                        <label> <h5>Pull Notice Date</h5> </label>
-                                        <input
-                                            placeholder="mm-dd-yy"
-                                            name="pull_notice"
-                                            type="date"
-                                            onChange={changeValue}
-                                        />
-                                    </div>
-                                </div>
-                                <div className={Classes.flexAlign2} >
-                                    <div>
-                                        <label> <h5>Notes</h5> </label>
-                                        <textarea
-                                            placeholder='Notes'
-                                            name='safety_notes'
-                                            type='text'
-                                            onChange={changeValue}
-                                            rows={5}
-                                            style={{ width: '31rem' }}
-                                        />
-                                    </div>
-                                </div>
-                            </div>
-                            <div className={Classes.tableHeader} >
-                                <h4>Emergency Contacts</h4>
-                                <div>
-                                    <div className="add-button-mini" > <h5>+ Add Item</h5> </div>
-                                </div>
-                            </div>
-                            <div className={Classes.tableBody} >
-                                <div className={Classes.flexAlign2} >
-                                    
-                                </div>
-                                <div className={Classes.flexAlign2} >
-                                    
-                                </div>
-                                <div className={Classes.flexAlign2} >
-                                    
-                                </div>
-                            </div>
-
-                            <div className={Classes.tableHeader} >
-                                <h4>Violations</h4>
-                                <div>
-                                    <div className="add-button-mini" > <h5>+ Add Item</h5> </div>
-                                </div>
-                            </div>
-                            <div className={Classes.tableBody} >
-                                <div className={Classes.flexAlign2} >
-                                    
-                                </div>
-                                <div className={Classes.flexAlign2} >
-                                    
-                                </div>
-                                <div className={Classes.flexAlign2} >
-                                    
-                                </div>
-                            </div>
-
-                            <div className={Classes.tableHeader} >
-                                <h4>Driver Documents</h4>
-                            </div>
-                            <div className={Classes.tableBody}>
-                                <div className={Classes.flexAlign2}>
-                                    <div>
-                                        <label> <h5>Checklist</h5> </label>
-                                    </div>
-                                </div>
-                                <div className={Classes.flexAlign2}>
-                                    <div>
-                                        <label> <h5>Check All</h5> </label>
-                                    </div>
-                                </div>
-                            </div>
+                            
 
                         </div>
                     </div>

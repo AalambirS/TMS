@@ -26,7 +26,7 @@ const Drivers = () => {
 
 
   const columns = [
-    "Name", "E. Code", "Driver Type", "Cell #",
+    "First Name", "Last Name", "E. Code", "Driver Type", "Cell #",
      "Assigned Power Unit", "Activity", "Home City", 
      "Status", "Approved",
     {
@@ -51,20 +51,79 @@ const Drivers = () => {
   };
 
   const dummyData = [
-    ['K Singh', 'KS', 'Solo', '510-000-9999', 'Trailer-A', 'En Route', 'Los Angeles, CA', 'Active', 'Yes'],
-    ['A Singh', 'AS', 'Team', '111-222-3333','Trailer-B', 'En Route',  'Miami, FL', 'Active', 'Yes'],
-    ['K Singh', 'KS', 'Solo', '510-000-9999', 'Trailer-A', 'En Route', 'Los Angeles, CA', 'Active', 'Yes'],
-    ['A Singh', 'AS', 'Team', '111-222-3333','Trailer-B', 'En Route',  'Miami, FL', 'Active', 'Yes'],
-    ['K Singh', 'KS', 'Solo', '510-000-9999', 'Trailer-A', 'En Route', 'Los Angeles, CA', 'Active', 'Yes'],
-    ['A Singh', 'AS', 'Team', '111-222-3333','Trailer-B', 'En Route',  'Miami, FL', 'Active', 'Yes'],
-    ['K Singh', 'KS', 'Solo', '510-000-9999', 'Trailer-A', 'En Route', 'Los Angeles, CA', 'Active', 'Yes'],
-    ['A Singh', 'AS', 'Team', '111-222-3333','Trailer-B', 'En Route',  'Miami, FL', 'Active', 'Yes'],
-    ['K Singh', 'KS', 'Solo', '510-000-9999', 'Trailer-A', 'En Route', 'Los Angeles, CA', 'Active', 'Yes'],
-    ['A Singh', 'AS', 'Team', '111-222-3333','Trailer-B', 'En Route',  'Miami, FL', 'Active', 'Yes'],
-    ['K Singh', 'KS', 'Solo', '510-000-9999', 'Trailer-A', 'En Route', 'Los Angeles, CA', 'Active', 'Yes'],
-    ['A Singh', 'AS', 'Team', '111-222-3333','Trailer-B', 'En Route',  'Miami, FL', 'Active', 'Yes'],
-    ['K Singh', 'KS', 'Solo', '510-000-9999', 'Trailer-A', 'En Route', 'Los Angeles, CA', 'Active', 'Yes'],
-    ['A Singh', 'AS', 'Team', '111-222-3333','Trailer-B', 'En Route',  'Miami, FL', 'Active', 'Yes']
+    {
+      "First Name": "Kashmir",
+      "Last Name": "Singh",
+      "E. Code": "KS",
+      "Driver Type": "Solo",
+      "Cell #": "510-000-9999",
+      "Assigned Power Unit": "Trailer-A",
+      "Activity": "En Route",
+      "Home City": "Los Angeles, CA",
+      "Status": "Active",
+      "Approved": "Yes"
+    },
+    {
+      "First Name": "A",
+      "Last Name": "Singh",
+      "E. Code": "AS",
+      "Driver Type": "Team",
+      "Cell #": "111-222-3333",
+      "Assigned Power Unit": "Trailer-B",
+      "Activity": "En Route",
+      "Home City": "Miami, FL",
+      "Status": "Active",
+      "Approved": "Yes"
+    },
+    {
+      "First Name": "Kashmir",
+      "Last Name": "Singh",
+      "E. Code": "KS",
+      "Driver Type": "Solo",
+      "Cell #": "510-000-9999",
+      "Assigned Power Unit": "Trailer-A",
+      "Activity": "En Route",
+      "Home City": "Los Angeles, CA",
+      "Status": "Active",
+      "Approved": "Yes"
+    },
+    // ... other objects ...
+    {
+      "First Name": "A",
+      "Last Name": "Singh",
+      "E. Code": "KS",
+      "Driver Type": "Solo",
+      "Cell #": "510-000-9999",
+      "Assigned Power Unit": "Trailer-A",
+      "Activity": "En Route",
+      "Home City": "Los Angeles, CA",
+      "Status": "Active",
+      "Approved": "Yes"
+    },
+    {
+      "First Name": "Kashmir",
+      "Last Name": "Singh",
+      "E. Code": "AS",
+      "Driver Type": "Team",
+      "Cell #": "111-222-3333",
+      "Assigned Power Unit": "Trailer-B",
+      "Activity": "En Route",
+      "Home City": "Miami, FL",
+      "Status": "Active",
+      "Approved": "Yes"
+    },
+    {
+      "First Name": "A",
+      "Last Name": "Singh",
+      "E. Code": "KS",
+      "Driver Type": "Solo",
+      "Cell #": "510-000-9999",
+      "Assigned Power Unit": "Trailer-A",
+      "Activity": "En Route",
+      "Home City": "Los Angeles, CA",
+      "Status": "Active",
+      "Approved": "Yes"
+    }
   ];
   return (
     <div>

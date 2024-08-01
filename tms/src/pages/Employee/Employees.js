@@ -46,7 +46,7 @@ const Employee = () => {
   };
 
   const columns = [
-    'No.', 'First Name', 'Last Name', 'Employee Type', 'Start Date', 'Quit Date', 'Status',
+    'employeeNumber', 'firstName', 'lastName', 'employeeType', 'startDate', 'quitDate', 'status',
     {
       name: "Actions",
       options: {
@@ -68,108 +68,74 @@ const Employee = () => {
     rowsPerPageOptions: [5, 10, 20, 40],
   };
 
-  const dummyData = [
+  const [dummyData, setDummyData] = useState([
     {
-    "No.": 1,
-    Company: "Acme Inc.",
-    "Employee MC": "ACME123",
-    Contact: "John Smith",
-    Address: "123 Main St",
-    City: "New York",
-    State: "NY",
-    Country: "USA",
-    "Avl. Credit": 5000.00, // Available Credit
-    "Sales Rep": "Jane Doe",
-    Status: "Active"
-  },
-  {
-    "No.": 2,
-    Company: "Global Tech",
-    "Employee MC": "GLOB456",
-    Contact: "Jane Doe",
-    Address: "456 Elm St",
-    City: "Los Angeles",
-    State: "CA",
-    Country: "USA",
-    "Avl. Credit": 2345.67,
-    "Sales Rep": "John Smith",
-    Status: "Active"
-  },
-  {
-    "No.": 3,
-    Company: "Green Solutions",
-    "Employee MC": "GREEN789",
-    Contact: "David Lee",
-    Address: "789 Oak Ave",
-    City: "Chicago",
-    State: "IL",
-    Country: "USA",
-    "Avl. Credit": 10000.00,
-    "Sales Rep": "Michael Chen",
-    Status: "On Hold"
-  },
-  {
-    "No.": 4,
-    Company: "Sunshine Delivery",
-    "Employee MC": "SUNSH456",
-    Contact: "Maria Garcia",
-    Address: "123 Main St", // Generic address repeated
-    City: "Miami",
-    State: "FL",
-    Country: "USA",
-    "Avl. Credit": 0.00,
-    "Sales Rep": "Aisha Khan",
-    Status: "Past Due"
-  },
-  {
-    "No.": 5,
-    Company: "Lone Star Express",
-    "Contact": "William Johnson",
-    Address: "567 Elm St", // Generic address repeated
-    City: "Dallas",
-    State: "TX",
-    Country: "USA",
-    "Avl. Credit": 3456.78,
-    "Sales Rep": "Peter Schmidt",
-    Status: "Active"
-  },
-  {
-    "No.": 6,
-    Company: "Pacific Coast Transport",
-    "Contact": "Aisha Khan",
-    Address: "89 Ocean View Blvd",
-    City: "San Diego",
-    State: "CA",
-    Country: "USA",
-    "Avl. Credit": 8790.32,
-    "Sales Rep": "Michael Chen",
-    Status: "Active"
-  },
-  {
-    "No.": 7,
-    Company: "Rocky Mountain Haulers",
-    "Contact": "Peter Schmidt",
-    Address: "34 Mountain View Ave",
-    City: "Denver",
-    State: "CO",
-    Country: "USA",
-    "Avl. Credit": 5234.78,
-    "Sales Rep": "Jane Doe",
-    Status: "Active"
-  },
-  {
-    "No.": 8,
-    Company: "North Wind Logistics",
-    "Contact": "Peter Schmidt", // Kept for name variation
-    Address: "567 Friedrichstrasse", // Removed non-US address, replaced with generic
-    City: "Seattle", // Changed city to US location
-    State: "WA",
-    Country: "USA",
-    "Avl. Credit": 1234.56,
-    "Sales Rep": "John Smith",
-    Status: "Active"
-  }
-];
+      "employeeNumber": 12345,
+      "firstName": "John",
+      "lastName": "Doe",
+      "middleName": "Michael",
+      "username": "john.doe",
+      "dateOfBirth": "1985-01-23", // Assuming ISO 8601 date format for React.js
+      "driverLicense": "ABC12345",
+      "dlState": "CA",
+      "companyEmail": "john.doe@greencompany.com",
+      "personalEmail": "john.doe@example.com",
+      "phoneNumber": 5551234567, // Assuming numeric phone number for React.js
+      "cellNumber": 8885551212, // Assuming numeric cell number for React.js
+      "employeeType": "Full-Time",
+      "startDate": "2022-07-15", // Assuming ISO 8601 date format for React.js
+      "quitDate": null,
+      "reasonForQuitting": "",
+      "country": "USA",
+      "address": "123 Main St",
+      "city": "Anytown",
+      "state": "CA",
+      "zip": 90210,
+      "status": "Active",
+      "comments": "This is a valuable employee!",
+      "payType": "Salary",
+      "taxType": "W-2",
+      "pay": "Bi-Weekly" // Assuming predefined options for pay frequency
+    },
+    {
+      "employeeNumber": 54321,
+      "firstName": "Jane",
+      "lastName": "Smith",
+      "middleName": "Anne",
+      "username": "jane.smith",
+      "dateOfBirth": "1990-05-15", // Assuming ISO 8601 date format for React.js
+      "driverLicense": "XYZ54321",
+      "dlState": "NY",
+      "companyEmail": "jane.smith@greencompany.com",
+      "personalEmail": "jane.smith@example.com",
+      "phoneNumber": 5559876543, // Assuming numeric phone number for React.js
+      "cellNumber": 8889876543, // Assuming numeric cell number for React.js
+      "employeeType": "Part-Time",
+      "startDate": "2023-01-10", // Assuming ISO 8601 date format for React.js
+      "quitDate": null,
+      "reasonForQuitting": "",
+      "country": "USA",
+      "address": "456 Elm St",
+      "city": "Othertown",
+      "state": "NY",
+      "zip": 54321,
+      "status": "Active",
+      "comments": "A dedicated employee!",
+      "payType": "Hourly",
+      "taxType": "W-2",
+      "pay": "Weekly" // Assuming predefined options for pay frequency
+    },
+    // Add more objects as needed
+]);
+const updateEmployeeData = (updatedData) => {
+  const updatedEmployees = dummyData.map((employee) => {
+    if (employee.employeeNumber === updatedData.employeeNumber) {
+      return { ...updatedData };
+    }
+    return employee;
+  });
+  setDummyData(updatedEmployees);
+};
 
   return (
     <div>
@@ -179,9 +145,9 @@ const Employee = () => {
           <button className='add-button' onClick={() => { setshowAddEmployeePopup(true) }} > <h5>Add Employee</h5> </button>
         </div>
       </div>
-      <TableComponent title="Employees" data={employeeData} columns={columns} options={options} />
+      <TableComponent title="Employees" data={dummyData} columns={columns} options={options} />
       {showAddEmployeePopup && <AddEmployee handleClosePopup={handleCloseAddEmployeePopup} />}
-      {showEditEmployeePopup && <EditEmployee rowData={selectedRowData} handleClosePopup={handleCloseEditEmployeePopup} />}
+      {showEditEmployeePopup && <EditEmployee rowData={selectedRowData} updateEmployeeData={updateEmployeeData} handleClosePopup={handleCloseEditEmployeePopup} />}
     </div>
   );
 };
