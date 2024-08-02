@@ -1,0 +1,20 @@
+.container {
+    display: grid; 
+    padding-top: 0.9rem;
+    padding-bottom: 2.5rem; 
+    place-items: center; 
+    width: calc(100% - 80px);
+}
+
+.container.active {
+    width: calc(100% - 200px);
+}
+/* .table {
+    width: 83.333333%; 
+    max-width: calc(100% - 90px); 
+    min-height: 100vh; 
+}
+
+.table.active {
+    width: calc(100% - 200px);
+} */

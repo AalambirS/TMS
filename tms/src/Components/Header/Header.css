@@ -1,0 +1,28 @@
+.Header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 6vh;
+    /* border: 1px solid red; */
+    position: relative;
+    z-index: 100;
+    padding: 0 5%;
+    background: rgb(63, 66, 69);
+    box-shadow: rgb(0 0 0 / 6%) 0px 2px 15px;
+}
+
+.header__nav {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.header__settings_logo,
+.header__alerts_logo {
+    width: 22px;
+}
+
+.header__username h5 {
+    margin-left: 10px;
+    font-weight: 600;
+}

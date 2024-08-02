@@ -1,0 +1,69 @@
+.container {
+    /* display: grid; 
+    padding-top: 0.5rem;
+    padding-bottom: 2.5rem; 
+    place-items: center; */
+}
+
+.table {
+    /* //max-width: fit-content; */
+    /* min-height: 100vh;
+    min-width: 90%; */
+}
+
+.loadboardHeader{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.add-button{
+    padding: 5px 15px;
+    border-radius: 7px;
+    background: none;
+    border: none;
+    background: #ED3A23;
+    cursor: pointer;
+}
+
+.add-button h5{
+    color: white;
+}
+
+.add-button-mini{
+    padding: 2px 10px;
+    border-radius: 7px;
+    background: none;
+    border: none;
+    background: #ED3A23;
+    cursor: pointer;
+}
+
+.add-button-mini h5{
+    color: white;
+    font-size: 13px;
+}
+
+.table.active {
+    max-width: calc(100% - 200px);
+}
+
+.css-1gmr9bn-MuiPaper-root {
+    box-shadow: 0px 1px 2px -1px rgb(0 0 0 / 8%), 0px 1px 5px 0px rgb(0 0 0 / 8%), 0px 1px 1px 1px rgb(0 0 0 / 4%);
+}
+
+/* .tss-1cdcmys-MUIDataTable-responsiveBase {
+    overflow-y: auto;
+}
+
+.tss-1cdcmys-MUIDataTable-responsiveBase::-webkit-scrollbar {
+    height: 13px;
+}
+
+.tss-1cdcmys-MUIDataTable-responsiveBase::-webkit-scrollbar-thumb {
+    background: rgb(148, 148, 148);
+}
+
+.tss-1cdcmys-MUIDataTable-responsiveBase::-webkit-scrollbar-track {
+    background: #0f172a;
+} */
