@@ -27,7 +27,7 @@ function App() {
     const [data, setData] = useState(null);
 
     const headers = {
-        'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsImtpZCI6IjQwanpsNlJUbStmQ3FZa00iLCJ0eXAiOiJKV1QifQ.eyJhdWQiOiJhdXRoZW50aWNhdGVkIiwiZXhwIjoxNzIxNTAxMTE2LCJpYXQiOjE3MjE0OTc1MTYsImlzcyI6Imh0dHBzOi8vcGZsbWhwdnhhb3RnbndmZ3d6cnQuc3VwYWJhc2UuY28vYXV0aC92MSIsInN1YiI6IjhjMGU3ZTBlLTliMGMtNDVkYy1hMTA1LTU4NTIxN2RkMDE3OSIsImVtYWlsIjoibGVuYXh0ZWNobm9sb2d5QGdtYWlsLmNvbSIsInBob25lIjoiIiwiYXBwX21ldGFkYXRhIjp7InByb3ZpZGVyIjoiZW1haWwiLCJwcm92aWRlcnMiOlsiZW1haWwiXX0sInVzZXJfbWV0YWRhdGEiOnsiZW1haWwiOiJsZW5heHRlY2hub2xvZ3lAZ21haWwuY29tIiwiZW1haWxfdmVyaWZpZWQiOmZhbHNlLCJwaG9uZV92ZXJpZmllZCI6ZmFsc2UsInN1YiI6IjhjMGU3ZTBlLTliMGMtNDVkYy1hMTA1LTU4NTIxN2RkMDE3OSJ9LCJyb2xlIjoiYXV0aGVudGljYXRlZCIsImFhbCI6ImFhbDEiLCJhbXIiOlt7Im1ldGhvZCI6InBhc3N3b3JkIiwidGltZXN0YW1wIjoxNzIxNDk3NTE2fV0sInNlc3Npb25faWQiOiJmYWI4MTY0OS00ZDlmLTQ3MDktYTZkZi04ODBhZjM2ODg5ZTciLCJpc19hbm9ueW1vdXMiOmZhbHNlfQ.y1fUsS4sq0JsmRPkgrdmuq9chJduC0nNLhnfO_xZWs8'
+        'Authorization': 'Bearer'
       };
 
   useEffect(() => {
@@ -93,3 +93,8 @@ export default App;
 // 6. Integrate Frontend/Backend
 // 7. Debug
 // 8. Create Driver Revenue/Pay
+// 9. Have ability to create multiple pick/drops, multiple emergency contacts and preview for:
+//  - Drivers
+//  - Employee
+//  - Equipment
+//  - 
